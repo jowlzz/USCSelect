@@ -1,42 +1,78 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+body{
+  margin: 0;
+  background: var(--bg-color);
+}
+.logoSpace{
+  margin-top: 70px;
+}
+.logoSpace img{
+  height: 100px;
+}
+.logoSpace h5{
+  border-left: #000;
+  letter-spacing: 3px;
+  width: fit-content;
+  color: #000;
   text-align: center;
+  font-family: Inter;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  position: relative;
+}
+.logoSpace h5::before, 
+.logoSpace h5::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.logoSpace h5::before{
+  background-color: white;
+  animation: typewriter 3s steps(22) forwards;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.logoSpace h5::after{
+  width: 0.150em;
+  background: #000;
+  animation: typewriter 3s steps(22) forwards, 
+             blink 500ms steps(22) infinite;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes typewriter{
+  to{
+    left: 100%;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@keyframes blink{
+  to{
+    background-color: transparent;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.logoSpace button{
+  color: #FFF;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  color: white;
+  width: 200px;
+  height: 50px;
+  border-radius: 10px;
+  border-style: none;
+  background: #FEC146;
+  transition: .5s;
 }
 
-.card {
-  padding: 2em;
-}
+.logoSpace button:hover{
+  cursor: pointer;
+  background: #FFF;
+  color: #FEC146;
 
-.read-the-docs {
-  color: #888;
 }
