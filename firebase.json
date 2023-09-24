@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "uscselect",
     "public": "dist",
     "ignore": [
       "firebase.json",
