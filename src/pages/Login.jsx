@@ -94,7 +94,7 @@ import {
             <Stack spacing="2">
             <Button>Login</Button>
             <Text color="fg.muted">
-            Don't have an account? {<Link as = {ReactRouterLink} to = "/register">Sign up!</Link>}
+            Register as Admin? {<Link as = {ReactRouterLink} to = "/registerAdmin">Sign up!</Link>}
             </Text>
             <HStack>
                 <Divider />
