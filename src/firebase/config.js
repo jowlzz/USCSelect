@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
+
 const firebaseConfig = {
   apiKey: "AIzaSyASqDURLGod9tiXJbmNXlICWf-c_XdIzB4",
   authDomain: "e-vote-ph.firebaseapp.com",
