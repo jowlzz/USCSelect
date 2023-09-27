@@ -1,23 +1,10 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import WelcomePg from "./pages/WelcomePage";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
-  return (
-    <>
-      <div className='logoSpace'>
-        <center><img src="./images/uscLogo.png" />
-                <h5>Are you ready to vote?</h5>
-
-                <button>VOTE NOW!</button>
-
-        </center>
-            
-          
-        </div>
-    </>
-  )
+  return <>{/* <WelcomePg/> */}</>;
 }
 
-export default App
+export default App;
