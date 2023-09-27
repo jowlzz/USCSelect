@@ -1,15 +1,10 @@
-import { useState } from 'react'
-import WelcomePg from './pages/WelcomePage'
-
+import { useState } from "react";
+import WelcomePg from "./pages/WelcomePage";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
-  return (
-    <>
-      {/* <WelcomePg/> */}
-    </>
-  )
+  return <>{/* <WelcomePg/> */}</>;
 }
 
-export default App
+export default App;
