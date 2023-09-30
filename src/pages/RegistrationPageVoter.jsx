@@ -19,6 +19,7 @@ import {
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { Auth } from '../firebase/config';
+import registrationBG from '../assets/backgrounds/Registration for Voters.png';
 
 function RegisterAccount() {
   const [showPassword, setShowPassword] = useState(false);
@@ -53,55 +54,66 @@ function RegisterAccount() {
 
   return (
     <ChakraProvider>
+      <Box
+        backgroundImage={registrationBG}
+        height="100vh"
+        backgroundPosition="center"
+        objectFit="cover"
+        backgroundSize="cover"
+      >
+
       <Flex
-        minH={'100vh'}
+        minH='100vh'
         align={'center'}
         justify={'center'}
-        bg={useColorModeValue('gray.50', 'gray.800')}>
-        <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
-          <Stack align={'center'}>
-            <Heading fontSize={'4xl'} textAlign={'center'}>
+        float={'left'}
+       >
+
+        <Stack spacing={8} mx={'auto'} maxW={'lg'} py={6} px={6} pl={50} >
+         
+          
+          <Box
+            bg={useColorModeValue('white', 'gray.700')}
+            boxShadow={'lg'}
+            p={50}
+            rounded="25px"
+            >
+
+          <Stack align={'center'} pb={10}>
+            <Heading fontSize={'3xl'} textAlign={'center'}>
               Register As Voter
             </Heading>
           </Stack>
-          <Box
-            rounded={'lg'}
-            bg={useColorModeValue('white', 'gray.700')}
-            boxShadow={'lg'}
-            p={8}>
+          
             <form onSubmit={handleSignUp}>
-              <Stack spacing={4}>
-                <HStack>
-                  <Box>
-                    <FormControl id="name">
-                      <FormLabel>Name</FormLabel>
-                      <Input type="text" />
+              <Stack spacing={4} w={300}>
+              <FormControl id="name">
+                      <FormLabel><b>Name</b></FormLabel>
+                      <Input type="text" placeholder="Your name..."/>
                     </FormControl>
-                  </Box>
-                  <Box>
                     <FormControl id="idNumber">
-                      <FormLabel>ID number</FormLabel>
-                      <Input type="number" />
+                      <FormLabel><b>ID Number</b></FormLabel>
+                      <Input type="number" placeholder="Your ID..."/>
                     </FormControl>
-                  </Box>
-                </HStack>
                 <FormControl id="email" isRequired>
-                  <FormLabel>Email address</FormLabel>
+                  <FormLabel><b>Email address</b></FormLabel>
                   <Input
                     type="email"
                     id="email"
                     value={email}
                     onChange={handleInputChange}
+                    placeholder="Your usc email..."
                   />
                 </FormControl>
                 <FormControl id="password" isRequired>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel><b>Password</b></FormLabel>
                   <InputGroup>
                     <Input
                       type={showPassword ? 'text' : 'password'}
                       id="password"
                       value={password}
                       onChange={handleInputChange}
+                      placeholder="Your password..."
                     />
                     <InputRightElement h={'full'}>
                       <Button
@@ -119,24 +131,25 @@ function RegisterAccount() {
                     type="submit"
                     loadingText="Submitting"
                     size="lg"
-                    bg={'blue.400'}
+                    bg="#FEC146"
                     color={'white'}
                     _hover={{
-                      bg: 'blue.500',
+                      bg: '#134D0F',
                     }}>
-                    Sign up
+                    <b>Sign Up</b>
                   </Button>
                 </Stack>
               </Stack>
             </form>
             <Stack pt={6}>
               <Text align={'center'}>
-                Already a user? <Link color={'blue.400'}>Login</Link>
+                Already a voter? <Link color='#134D0F' fontSize={'17'}><b>Login</b></Link>
               </Text>
             </Stack>
           </Box>
         </Stack>
       </Flex>
+      </Box>
     </ChakraProvider>
   );
 }
