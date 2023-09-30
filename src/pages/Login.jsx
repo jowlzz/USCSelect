@@ -1,183 +1,120 @@
 import {
-	Stack,
-	Box,
-	Flex,
-	Text,
-	Image,
-	FormControl,
-	Input,
-	Button,
-	FormLabel,
-	InputGroup,
-	InputRightElement,
-	useBreakpointValue,
-	HStack,
-	Divider,
-} from "@chakra-ui/react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider1 from "../atoms/Slider1";
-import USCLogo from "../atoms/usclogo.png";
-import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import { BsGoogle } from "react-icons/bs";
+    Box,
+    Button,
+    Container,
+    Divider,
+    FormControl,
+    FormLabel,
+    Heading,
+    HStack,
+    Input,
+    Link,
+    Stack,
+    Text,
+    ChakraProvider
+  } from '@chakra-ui/react'
+  import { PasswordField } from '../components/passwordField.jsx'
+  import { NavLink, Link as ReactRouterLink } from 'react-router-dom'
+  import "../main.jsx"
 
-import { useState } from "react";
-const Login = () => {
-	const [showPassword, setShowPassword] = useState(false);
-	const [password, setPassword] = useState("");
-	const [email, setEmail] = useState("");
 
-	const handleInputChange = (e) => {
-		if (e.target.id === "email") {
-			setEmail(e.target.value);
-		} else if (e.target.id === "password") {
-			setPassword(e.target.value);
-		}
-	};
 
-	const isSliderVisible = useBreakpointValue({
-		base: false,
-		sm: false,
-		md: true,
-		lg: true,
-		xl: true,
-	});
 
-	return (
-		<Flex>
-			{isSliderVisible && (
-				<Box width="60%">
-					<LoginSlider />
-				</Box>
-			)}
-			<Box width="40%">
-				<Stack
-					direction="column"
-					marginTop={10}
-					justifyContent="center"
-					alignItems="center"
-				>
-					<Image src={USCLogo} width={200} height={245} />
+  function LoginPage() {
+    return(
+        <>
+        <ChakraProvider>
 
-					<Stack direction="column" width={500} gap={5} marginTop={8}>
-						<FormControl>
-							<FormLabel
-								htmlFor="email"
-								fontWeight="bold"
-								fontSize={20}
-							>
-								Name
-							</FormLabel>
-							<Input id="email" type="email" height={20} />
-						</FormControl>
-						<FormControl>
-							<FormLabel
-								htmlFor="email"
-								fontWeight="bold"
-								fontSize={20}
-							>
-								ID Number
-							</FormLabel>
-							<Input id="email" type="email" height={20} />
-						</FormControl>
-						<FormControl>
-							<FormLabel
-								htmlFor="email"
-								fontWeight="bold"
-								fontSize={20}
-							>
-								Password
-							</FormLabel>
-							<InputGroup>
-								<Input
-									type={showPassword ? "text" : "password"}
-									id="password"
-									value={password}
-									onChange={handleInputChange}
-									height={20}
-								/>
-								<InputRightElement h={"full"}>
-									<Button
-										variant={"ghost"}
-										onClick={() =>
-											setShowPassword(
-												(showPassword) => !showPassword
-											)
-										}
-									>
-										{showPassword ? (
-											<ViewIcon />
-										) : (
-											<ViewOffIcon />
-										)}
-									</Button>
-								</InputRightElement>
-							</InputGroup>
-						</FormControl>
-					</Stack>
-				</Stack>
-				<Button
-					variant="text"
-					size="sm"
-					marginLeft={40}
-					marginTop={3}
-					marginBottom={3}
-				>
-					Forgot password?
-				</Button>
-				<Stack
-					direction="column"
-					justifyContent="center"
-					alignItems="center"
-				>
-					<Button width="60%">Login</Button>
-					<Text color="fg.muted">Register as Admin? Sign Up</Text>
-					<HStack>
-						<Divider />
-						<Text
-							textStyle="sm"
-							whiteSpace="nowrap"
-							color="fg.muted"
-						>
-							or continue with
-						</Text>
-						<Divider />
-					</HStack>
-					<Button
-						width="60%"
-						display="flex"
-						gap={2}
-						backgroundColor="#1E7817"
-						color="white"
-						paddingTop={6}
-						paddingBottom={6}
-						_hover={{
-							backgroundColor: "#1E7817",
-						}}
-					>
-						<BsGoogle />
-						Continue with Google
-					</Button>
-				</Stack>
-			</Box>
-		</Flex>
-	);
-};
+        <form action="" className="Login-Form">
 
-export default Login;
+<Container
+    maxW="600px"
+    marginTop={"100px"}
+    centerContent
+   
+    >
+    <Stack spacing="8">
+        <Stack spacing="6">
+        <Stack
+            spacing={{
+            base: '2',
+            md: '3',
+            }}
+            textAlign="center"
+        >
+            <Heading
+            size={{
+                base: 'xs',
+                md: 'sm',
+            }}
+            >
+            Log in to your account
+            </Heading>
+        </Stack>
+        </Stack>
+        <Box
+        py={{
+            base: '0',
+            sm: '8',
+        }}
+        px={{
+            base: '4',
+            sm: '10',
+        }}
+        bg={{
+            base: 'transparent',
+            sm: 'bg.surface',
+        }}
+        boxShadow={{
+            base: 'none',
+            sm: 'md',
+        }}
+        borderRadius={{
+            base: 'none',
+            sm: 'xl',
+        }}
+        >
+        <Stack spacing="2">
+            <Stack spacing="2">
+            <FormControl>
+               <center><FormLabel htmlFor="email">Name</FormLabel></center>
+                <Input id="email" type="email" />
+            </FormControl>
+            <FormControl>
+               <center><FormLabel htmlFor="number">ID Number</FormLabel></center>
+                <Input id="Id_number" type="number" />
+            </FormControl>
+            <PasswordField />
+            </Stack>
+            <HStack justify="space-between">
+            <Button variant="text" size="sm">
+                Forgot password?
+            </Button>
+            </HStack>
+            <Stack spacing="2">
+            <Button>Login</Button>
+            <Text color="fg.muted">
+            Don't have an account? {<Link as = {ReactRouterLink} to = "/register">Sign up!</Link>}
+            </Text>
+            <HStack>
+                <Divider />
+                <Text textStyle="sm" whiteSpace="nowrap" color="fg.muted">
+                or continue with
+                </Text>
+                <Divider />
+            </HStack>
+            {/* Google Account authn */}
+            </Stack>
+        </Stack>
+        </Box>
+    </Stack>
+    </Container>        
+      
+</form>
 
-const LoginSlider = () => {
-	const settings = {
-		dots: true,
-		infinite: true,
-		speed: 500,
-		slidesToShow: 1,
-		slidesToScroll: 1,
-	};
-	return (
-		<Slider {...settings}>
-			<Slider1 />
-		</Slider>
-	);
-};
+        </ChakraProvider>
+        </>
+    )
+  }
+  
+export default LoginPage
