@@ -12,6 +12,7 @@ import {
     Stack,
     Text,
     ChakraProvider,
+    Center, 
 } from "@chakra-ui/react";
 import { PasswordField } from "../components/passwordField.jsx";
 import { NavLink, Link as ReactRouterLink } from "react-router-dom";
@@ -23,27 +24,23 @@ function LoginPage() {
     return (
         <>
             <ChakraProvider>
-                <form action="" className="Login-Form">
-                    <Container maxW="600px" marginTop={"100px"} centerContent>
-                        <Stack spacing="8">
-                            <Stack spacing="6">
-                                <Stack
-                                    spacing={{
-                                        base: "2",
-                                        md: "3",
-                                    }}
-                                    textAlign="center"
-                                >
-                                    <Heading
-                                        size={{
-                                            base: "xs",
-                                            md: "sm",
-                                        }}
-                                    >
-                                        Log in to your account
-                                    </Heading>
-                                </Stack>
-                            </Stack>
+                <Box
+                    display="flex"
+                    alignItems="center"
+                    height="100vh"
+                >
+                    <Box
+                        flex="1"
+                        bg="green.400"
+                        height="100%"
+                    >
+
+                        {/*put images here*/}
+
+
+                    </Box>
+                    <Container maxW="500px">
+                        <Stack spacing="10">
                             <Box
                                 py={{
                                     base: "0",
@@ -66,36 +63,31 @@ function LoginPage() {
                                     sm: "xl",
                                 }}
                             >
-                                <Stack spacing="2">
-                                    <Stack spacing="2">
-                                        <FormControl>
-                                            <center>
-                                                <FormLabel htmlFor="email">
-                                                    Name
-                                                </FormLabel>
-                                            </center>
-                                            <Input id="email" type="email" />
-                                        </FormControl>
-                                        <FormControl>
-                                            <center>
-                                                <FormLabel htmlFor="number">
-                                                    ID Number
-                                                </FormLabel>
-                                            </center>
-                                            <Input
-                                                id="Id_number"
-                                                type="number"
-                                            />
-                                        </FormControl>
-                                        <PasswordField />
-                                    </Stack>
-                                    <HStack justify="space-between">
-                                        <Button variant="text" size="sm">
-                                            Forgot password?
+                                <Stack spacing="4">
+                                    <Stack spacing="4">
+                                        <HStack spacing="4" align="center">
+                                            <Divider />
+                                            <Text
+                                                textStyle="sm"
+                                                whiteSpace="nowrap"
+                                                color="fg.muted"
+                                            >
+                                                SIGN IN THROUGH GOOGLE
+                                            </Text>
+                                            <Divider />
+                                        </HStack>
+
+                                        <Button
+                                            leftIcon={<FaGoogle />}
+                                            colorScheme="green"
+                                            variant="solid"
+                                            onClick={signInWithGooglePopup}
+                                        >
+                                            Continue with Google
                                         </Button>
-                                    </HStack>
-                                    <Stack spacing="2">
-                                        <Button>Login</Button>
+                                    </Stack>
+
+                                    <Center>
                                         <Text color="fg.muted">
                                             Register as Admin?{" "}
                                             {
@@ -107,36 +99,15 @@ function LoginPage() {
                                                 </Link>
                                             }
                                         </Text>
-                                        <HStack spacing="2" align="center">
-                                            <Divider />
-                                            <Text
-                                                textStyle="sm"
-                                                whiteSpace="nowrap"
-                                                color="fg.muted"
-                                            >
-                                                or continue with
-                                            </Text>
-                                            <Divider />
-                                        </HStack>
-                                        {/* Google Account authn */}
-                                        <Button
-                                            leftIcon={<FaGoogle />}
-                                            colorScheme="green"
-                                            variant="solid"
-                                            onClick={signInWithGooglePopup}
-                                        >
-                                            Continue with Google
-                                        </Button>
-                                    </Stack>
+                                    </Center>
                                 </Stack>
                             </Box>
                         </Stack>
                     </Container>
-                </form>
+                </Box>
             </ChakraProvider>
         </>
     );
 }
 
 export default LoginPage;
-
