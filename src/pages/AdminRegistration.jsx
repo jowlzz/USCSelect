@@ -23,28 +23,30 @@ import { Auth } from "../firebase/config";
 
 function RegisterAccount() {
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showIdNumberForm, setShowIdNumberForm] = useState(false);
-  const [idNumber, setIdNumber] = useState("");
+  const [idNumber, setIdNumber] = useState('');
 
   const handleInputChange = (e) => {
     if (e.target.id === "email") {
       setEmail(e.target.value);
     } else if (e.target.id === "password") {
       setPassword(e.target.value);
-    } else if (e.target.id === "idNumber") {
+    } else if (e.target.id === 'idNumber') {
       setIdNumber(e.target.value);
-    } else if (e.target.id === "verificationCode") {
+    } else if (e.target.id === 'verificationCode') {
       setEnteredCode(e.target.value);
     }
   };
 
   const handleGetCode = () => {
+    
     if (email && password) {
       setShowIdNumberForm(true);
     } else {
-      console.log("Please fill in both email and password fields.");
+    
+      console.log('Please fill in both email and password fields.');
     }
   };
 
@@ -54,13 +56,14 @@ function RegisterAccount() {
         const auth = getAuth();
         await createUserWithEmailAndPassword(Auth, email, password);
 
-        console.log("User registered successfully with idNumber:", idNumber);
+ 
+      console.log('User registered successfully with idNumber:', idNumber);
 
-        setEmail("");
-        setPassword("");
-        setIdNumber("");
-        setShowIdNumberForm(false);
-      }
+     
+      setEmail('');
+      setPassword('');
+      setIdNumber('');
+      setShowIdNumberForm(false); 
     } catch (error) {
       console.error("Error registering user: ", error.message);
     }
@@ -81,23 +84,21 @@ function RegisterAccount() {
   return (
     <ChakraProvider>
       <Flex
-        minH={"100vh"}
-        align={"center"}
-        justify={"center"}
-        bg={useColorModeValue("gray.50", "gray.800")}
-      >
-        <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
-          <Stack align={"center"}>
-            <Heading fontSize={"4xl"} textAlign={"center"}>
+        minH={'100vh'}
+        align={'center'}
+        justify={'center'}
+        bg={useColorModeValue('gray.50', 'gray.800')}>
+        <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+          <Stack align={'center'}>
+            <Heading fontSize={'4xl'} textAlign={'center'}>
               Register As Admin
             </Heading>
           </Stack>
           <Box
-            rounded={"lg"}
-            bg={useColorModeValue("white", "gray.700")}
-            boxShadow={"lg"}
-            p={8}
-          >
+            rounded={'lg'}
+            bg={useColorModeValue('white', 'gray.700')}
+            boxShadow={'lg'}
+            p={8}>
             <form onSubmit={(e) => e.preventDefault()}>
               <Stack spacing={4}>
                 <HStack>
@@ -116,18 +117,17 @@ function RegisterAccount() {
                   <FormLabel>Password</FormLabel>
                   <InputGroup>
                     <Input
-                      type={showPassword ? "text" : "password"}
+                      type={showPassword ? 'text' : 'password'}
                       id="password"
                       value={password}
                       onChange={handleInputChange}
                     />
-                    <InputRightElement h={"full"}>
+                    <InputRightElement h={'full'}>
                       <Button
-                        variant={"ghost"}
+                        variant={'ghost'}
                         onClick={() =>
                           setShowPassword((showPassword) => !showPassword)
-                        }
-                      >
+                        }>
                         {showPassword ? <ViewIcon /> : <ViewOffIcon />}
                       </Button>
                     </InputRightElement>
@@ -150,25 +150,23 @@ function RegisterAccount() {
                   <Button
                     onClick={handleGetCode}
                     size="lg"
-                    bg={"blue.400"}
-                    color={"white"}
+                    bg={'blue.400'}
+                    color={'white'}
                     _hover={{
-                      bg: "blue.500",
+                      bg: 'blue.500',
                     }}
-                    isDisabled={!email || !password}
-                  >
+                    isDisabled={!email || !password}>
                     Get Code
                   </Button>
                   {showIdNumberForm && (
                     <Button
                       onClick={handleSignUp}
                       size="lg"
-                      bg={"green.400"}
-                      color={"white"}
+                      bg={'green.400'}
+                      color={'white'}
                       _hover={{
-                        bg: "green.500",
-                      }}
-                    >
+                        bg: 'green.500',
+                      }}>
                       Sign Up
                     </Button>
                   )}
@@ -176,9 +174,9 @@ function RegisterAccount() {
               </Stack>
             </form>
             <Stack pt={6}>
-              <Text align={"center"}>
-                Already a user?{" "}
-                <Link color={"blue.400"} as={ReactRouterLink} to="/adminLogin">
+              <Text align={'center'}>
+                Already a user?{' '}
+                <Link color={'blue.400'} as={ReactRouterLink} to="/adminLogin">
                   Login
                 </Link>
               </Text>
